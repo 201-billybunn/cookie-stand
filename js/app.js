@@ -195,7 +195,6 @@ var locationFive = {
   },
 };
 
-
 locationOne.render();
 locationTwo.render();
 locationThree.render();
