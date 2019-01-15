@@ -2,6 +2,84 @@
 
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
+/*
+// CONSTRUCTOR FUNCTIONS
+change object literal into a function with a capital first letter
+- add "this." before each property name
+- change colons after properties to assignments "="
+- replace commas after properties with semicolons ";"
+- add semicolon to end of contructor function
+- to invoke a new function from a constructor "var objectName = new Constructorname();"
+
+// RESTRUCTURE OBJECTS
+- create "helper functions" outside of objects that do repeated tasks (random hourly customer calc, random hourly cookie calc)
+- create methods within objects that call on helper functions
+- list methods separately from object with properties (have object declared with propterties, then have each method below added)
+*/
+
+//HELPER FUNCTIONS
+function calcRandomCustomersHourly(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive
+}
+function calcAvgCookiesHourly(customers, avgCookies) {
+  return customers * avgCookies;
+}
+function sumArray(arrName) { // Sums an array of numbers
+  function sum(a, b) {
+    return a + b;
+  }
+  return arrName.reduce(sum);
+}
+
+// rather than the line below, can we use get element by class and then loop through a ulElements array?
+var ulElement = document.getElementById('store-zero');
+// Ballard object
+var ballard = {
+  // Object properties
+  name: 'Ballard',
+  minCustomersEachHour: 10,
+  maxCustomersEachHour: 30,
+  avgCookiesPerCustomer: 5,
+  arrCustomersEachHour: [],
+  arrCookiesEachHour: [],
+  totalDailyCookies: 0,
+};
+
+// Object methods
+ballard.calcCustomersEachHour = function () {
+  for (var i = 0; i < hours.length; i++) {
+    this.arrCustomersEachHour.push(calcRandomCustomersHourly(this.minCustomersEachHour, this.maxCustomersEachHour));
+  }
+  console.log('arrCustomersEachHour:', this.arrCustomersEachHour);
+};
+ballard.calcCookiesEachHour = function () {
+  for (var i = 0; i < hours.length; i++) {
+    this.arrCookiesEachHour.push(calcAvgCookiesHourly(this.avgCookiesPerCustomer, this.arrCustomersEachHour[i]));
+    // console.log(`${this.avgCookiesPerCustomer} * ${this.arrCustomersEachHour[i]} = ${this.avgCookiesPerCustomer * this.arrCustomersEachHour[i]}`);
+  }
+  console.log('arrCookiesEachHour:', this.arrCookiesEachHour);
+};
+ballard.render = function () {
+  this.calcCustomersEachHour();
+  this.calcCookiesEachHour();
+  this.totalDailyCookies = sumArray(this.arrCookiesEachHour);
+  console.log(this.totalDailyCookies);
+  var ulElement = document.getElementById('store-zero');
+  for (var i = 0; i < hours.length; i++) {
+    // 1. Create element to hold the data
+    var liEl = document.createElement('li');
+    // 2. Assign the data to the element
+    liEl.textContent = `${hours[i]}: ${this.arrCookiesEachHour[i]} cookies`;
+    // 3. Put the element into the DOM
+    ulElement.appendChild(liEl);
+  }
+  var liEl = document.createElement('li');
+  liEl.textContent = `Total: ${this.totalDailyCookies} cookies`;
+  ulElement.appendChild(liEl);
+};
+
+ballard.render();
+
 // 1st and Pike Object
 var locationOne = {
   name: '1st and Pike',
