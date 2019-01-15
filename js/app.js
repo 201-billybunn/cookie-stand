@@ -31,8 +31,21 @@ function sumArray(arrName) { // Sums an array of numbers
   return arrName.reduce(sum);
 }
 
-// rather than the line below, can we use get element by class and then loop through a ulElements array?
-var ulElement = document.getElementById('store-zero');
+/*
+NOTE:
+  Instead of doing the following to select individual element nodes:
+    var ulElement = document.getElementById('store-zero');
+  I used .querySelectorAll(), which selects multiple elements (a nodelist) by a CSS selector.
+  Page 188 in the Duckett Javascript book explains some of these terms and DOM query methods.
+  The rest of the expression -- Array.prototype.slice.call() -- stores the nodelist into an JS array I can loop through and use;
+  just like the ulElement variable above. There's some great explainations at the links below.
+https://www.w3schools.com/jsref/met_document_queryselectorall.asp
+https://davidwalsh.name/nodelist-array
+https://stackoverflow.com/questions/2125714/explanation-of-slice-call-in-javascript
+*/
+var ulElementsArray = Array.prototype.slice.call(document.querySelectorAll('.store'));
+var ulElementsArrayPosition = 0;
+
 // Ballard object
 var ballard = {
   // Object properties
@@ -59,23 +72,29 @@ ballard.calcCookiesEachHour = function () {
   }
   console.log('arrCookiesEachHour:', this.arrCookiesEachHour);
 };
+
 ballard.render = function () {
-  this.calcCustomersEachHour();
-  this.calcCookiesEachHour();
-  this.totalDailyCookies = sumArray(this.arrCookiesEachHour);
-  console.log(this.totalDailyCookies);
-  var ulElement = document.getElementById('store-zero');
-  for (var i = 0; i < hours.length; i++) {
-    // 1. Create element to hold the data
+  for (var i = 0 + ulElementsArrayPosition; i < ulElementsArray.length; i++) {
+    this.calcCustomersEachHour();
+    this.calcCookiesEachHour();
+    this.totalDailyCookies = sumArray(this.arrCookiesEachHour);
+    console.log(this.totalDailyCookies);
+    // var ulElement = document.getElementById('store-zero');
+    for (var i = 0; i < hours.length; i++) {
+      // 1. Create element to hold the data
+      var liEl = document.createElement('li');
+      // 2. Assign the data to the element
+      liEl.textContent = `${hours[i]}: ${this.arrCookiesEachHour[i]} cookies`;
+      // 3. Put the element into the DOM
+      // ulElement.appendChild(liEl);
+      ulElementsArray[0].appendChild(liEl);
+    }
     var liEl = document.createElement('li');
-    // 2. Assign the data to the element
-    liEl.textContent = `${hours[i]}: ${this.arrCookiesEachHour[i]} cookies`;
-    // 3. Put the element into the DOM
-    ulElement.appendChild(liEl);
+    liEl.textContent = `Total: ${this.totalDailyCookies} cookies`;
+    ulElementsArray[0].appendChild(liEl);
+    ulElementsArrayPosition++;
+    break;
   }
-  var liEl = document.createElement('li');
-  liEl.textContent = `Total: ${this.totalDailyCookies} cookies`;
-  ulElement.appendChild(liEl);
 };
 
 ballard.render();
