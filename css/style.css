@@ -1,0 +1,217 @@
+body {
+    /* border: 5px dashed red; */
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+#right {
+    /* border: 5px dotted magenta; */
+}
+
+.sidenav {
+    /* border: 5px dashed orange; */
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #726F63;
+    overflow-x: hidden;
+    /* padding-top: 20px; */
+}
+  
+.sidenav img {
+    width: 100%;
+}
+
+#sidebar-title {
+    font-size: 120%;
+    color: white;
+    text-align: center;
+    font-family: 'Patua One', cursive;
+}
+
+nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 200%;
+}
+
+.sidenav a {
+    /* padding: 6px 8px 6px 16px; */
+    text-decoration: none;
+    /* font-size: 25px; */
+    color: white;
+    display: block;
+}
+  
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+  
+.main {
+    /* border: 5px dashed yellow; */
+    margin-left: 165px; /* Same as the width of the sidenav */
+    /* padding: 3%; */
+    font-size: 3vw; /* Increased text to enable scrolling */
+    /* padding: 0px 10px; */
+}
+
+#section-one {
+    /* border: 5px dashed indigo; */
+    height: 65vh;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/2c/Chum_salmon_leaping_%286088542755%29.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    text-align: center;
+    color: white;
+    padding-top: 37vh;
+}
+#title {
+    /* margin: auto auto auto auto; */
+    font-size: 10vh;
+    font-family: 'Patua One', cursive;
+}
+#title:first-child(1) {
+    font-size: 6vh;
+}
+@media screen and (max-width: 800px) {
+    #title {
+    font-size: 7vw;
+}
+
+#section-two {
+    /* border: 5px dashed violet; */
+    height: 100vh;
+    
+    
+}
+
+#section-two h2 {
+    font-size: 8vh;
+}
+
+@media screen and (max-width: 800px) {
+    #section-two {
+    font-size: 5vw;
+}
+
+footer {
+    color: black;
+    /* font-size: 100px; */
+    /* border: 5px dashed indigo; */
+    height: 100px;
+}
+footer .vcard {
+    font-size: 10px;
+}
+  
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+
+/* 726F63
+B5A098
+BFBBBF
+957243
+9C4A32 */
+
+
+
+
+/* https://css-tricks.com/box-sizing/ */
+/*
+ *, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+    border: 5px dashed red;
+
+  font-family: 'Open Sans', 'sans-serif';
+  background-color: #AE6A57;
+  color: #444;
+}
+
+h1, p {
+}
+
+#page-wrapper {
+    border: 5px dashed orange;
+    background-color: #726F63;
+    max-width: 940px;
+    margin: 0 20px;
+    display: grid;
+
+}
+
+#page-wrapper > .box {
+    margin: 10px;
+}
+
+header {
+    border: 5px dashed yellow;
+    background-color: #BFBBBF;
+    
+}
+
+header img {
+    max-width: 100%;
+}
+
+#content {
+    border: 5px dashed green;
+    background-color: #B5A098;
+}
+
+aside {
+    border: 5px dashed blue;
+    background-color: #957243;
+}
+
+footer {
+    border: 5px dashed indigo;
+}
+
+@media screen and (min-width: 500px) {
+
+  aside {
+    float: left;
+    width: 19.1489%;
+  }
+
+  #content {
+    float: right;
+    width: 79.7872%;
+  }
+
+  #page-wrapper {
+    margin: 0 auto;
+    grid-template-columns: 3fr 1fr;
+  }
+  
+  header, footer {
+    grid-column: 1 / -1;
+    clear: both;
+  }
+
+}
+
+#page-wrapper > * {
+  color: #fff;
+  padding: 20px;
+
+  margin-bottom: 10px;
+}
+
+@supports (display: grid) {
+  #page-wrapper > * {
+    width: auto;
+    margin: 0;
+  }
+}
+*/
