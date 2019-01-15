@@ -1,0 +1,107 @@
+/* 726F63
+B5A098
+BFBBBF
+957243
+9C4A32 */
+
+
+
+
+/* https://css-tricks.com/box-sizing/ */
+ *, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+    border: 5px dashed red;
+  /* margin: 40px; */
+  font-family: 'Open Sans', 'sans-serif';
+  background-color: #9C4A32;
+  color: #444;
+}
+
+h1, p {
+  /* margin: 0 0 1em 0; */
+}
+
+#page-wrapper {
+    border: 5px dashed orange;
+    background-color: #726F63;
+    max-width: 940px;
+    margin: 0 20px;
+    display: grid;
+    /* grid-gap: 10px; */
+    /* padding: 10px; */
+}
+
+#page-wrapper > .box {
+    margin: 10px;
+}
+
+header {
+    border: 5px dashed yellow;
+    background-color: #BFBBBF;
+    
+}
+
+header img {
+    max-width: 100%;
+}
+
+#content {
+    border: 5px dashed green;
+    background-color: #B5A098;
+}
+
+aside {
+    border: 5px dashed blue;
+    background-color: #957243;
+}
+
+footer {
+    border: 5px dashed indigo;
+}
+
+@media screen and (min-width: 500px) {
+
+  /* no grid support? */
+  aside {
+    float: left;
+    width: 19.1489%;
+  }
+
+  #content {
+    float: right;
+    width: 79.7872%;
+  }
+
+  #page-wrapper {
+    margin: 0 auto;
+    grid-template-columns: 3fr 1fr;
+  }
+  
+  header, footer {
+    grid-column: 1 / -1;
+    /* needed for the floated layout */
+    clear: both;
+  }
+
+}
+
+#page-wrapper > * {
+  /* background-color: #444; */
+  color: #fff;
+  /* border-radius: 5px; */
+  padding: 20px;
+  /* font-size: 150%; */
+  /* needed for the floated layout*/
+  margin-bottom: 10px;
+}
+
+/* We need to set the widths used on floated items back to auto, and remove the bottom margin as when we have grid we have gaps. */
+@supports (display: grid) {
+  #page-wrapper > * {
+    width: auto;
+    margin: 0;
+  }
+}
