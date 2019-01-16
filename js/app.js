@@ -16,12 +16,12 @@ function sumArray(arrName) { // Sums an array of numbers
 
 var hours = ['6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM'];
 
-var allLocations = [];
-var grandTotal = [];
-var locationTable = document.getElementById('locations');
+var allStores = [];
+var storeTotalArray = [];
+var storeTable = document.getElementById('stores');
 
-// LOCATION OBJECT CONSTRUCTOR FUNCTION
-function Location(name, minCustomersEachHour, maxCustomersEachHour, avgCookiesPerCustomer) {
+// STORE OBJECT CONSTRUCTOR FUNCTION
+function Store(name, minCustomersEachHour, maxCustomersEachHour, avgCookiesPerCustomer) {
   this.name = name,
   this.minCustomersEachHour = minCustomersEachHour;
   this.maxCustomersEachHour = maxCustomersEachHour;
@@ -34,11 +34,12 @@ function Location(name, minCustomersEachHour, maxCustomersEachHour, avgCookiesPe
     this.arrCookiesEachHour.push(calcAvgCookiesHourly(this.avgCookiesPerCustomer, this.arrCustomersEachHour[i]));
     this.totalDailyCookies = sumArray(this.arrCookiesEachHour);
   }
-  allLocations.push(this);
+  allStores.push(this); // Pushes each instances into array 'allStores'
+  storeTotalArray.push(this.totalDailyCookies); // Pushes each instances' 
 }
 
 // RENDER TABLE DATA PROTOTYPE
-Location.prototype.renderTable = function () {
+Store.prototype.renderTable = function () {
   var trEl = document.createElement('tr'); // Make a <tr> (table row)
 
   // Loop to create, content, append for 'Name'
@@ -58,7 +59,7 @@ Location.prototype.renderTable = function () {
   tdEl.textContent = this.totalDailyCookies;
   trEl.appendChild(tdEl);
 
-  locationTable.appendChild(trEl);
+  storeTable.appendChild(trEl);
 };
 
 // Separate function to make the table header
@@ -71,25 +72,78 @@ function makeHeaderRow() {
     trEl.appendChild(thEl);
   }
   thEl = document.createElement('th');
-  thEl.textContent = 'Daily Location Total';
+  thEl.textContent = 'Daily Store Total';
   trEl.appendChild(thEl);
-  locationTable.prepend(trEl);
+  storeTable.prepend(trEl);
 }
 
-// Function to render all locations
+
+// Function to render all stores
 function renderAllTables() {
-  for (var i = 0; i < allLocations.length; i++) {
-    allLocations[i].renderTable();
+  for (var i = 0; i < allStores.length; i++) {
+    allStores[i].renderTable();
   }
 }
 
-// Create Location instances
-new Location('1st and Pike', 23, 65, 6.3);
-new Location('SeaTac Airport', 3, 24, 1.2);
-new Location('Seattle Center', 11, 38, 3.7);
-new Location('Capitol Hill', 20, 38, 2.3);
-new Location('Alki', 2, 16, 4.6);
+// Create Store instances
+new Store('1st and Pike', 23, 65, 6.3);
+new Store('SeaTac Airport', 3, 24, 1.2);
+new Store('Seattle Center', 11, 38, 3.7);
+new Store('Capitol Hill', 20, 38, 2.3);
+new Store('Alki', 2, 16, 4.6);
 
-console.table(allLocations);
+console.table(allStores);
 makeHeaderRow();
 renderAllTables();
+// makeFooterRow();
+
+// Separate function to make the table footer
+function makeFooterRow() {
+  var trEl = document.createElement('tr');
+  var thEl = document.createElement('th');
+  for (var i = -1; i < hours.length; i++) { // 'i - 1' to create blank header cell above names
+    var thEl = document.createElement('th');
+    thEl.textContent = hours[i];
+    trEl.appendChild(thEl);
+  }
+  thEl = document.createElement('th');
+  thEl.textContent = 'Grand Total';
+  trEl.appendChild(thEl);
+  storeTable.prepend(trEl);
+}
+
+function calcHourlyTotal() {
+  for (var i = 0; i < allStores.length; i++) {
+    
+
+    tdEl = document.createElement('td');
+    tdEl.textContent = totalPerHour;
+    trEl.appendChild(tdEl);
+  }
+}
+
+/*
+for loop inside of for loop
+first loop looped through hours.length
+inner loop loops through allStores.length
+total per hour var above inner loop
+
+inner loop
+totalPerHour += allStores[j].cookiesSoldEachHourArray[i];
+
+
+inside outer loop, but after inner loop, put the DOM stuff
+  tdEl = document.createElement('td');
+  tdEl.textContent = totalPerHour;
+  trEl.appendChild(tdEl);
+
+*/
+
+
+
+// console.log(allStores[0]);
+// console.log(allStores[0].arrCookiesEachHour);
+// console.log(sumArray(allStores[0].arrCookiesEachHour));
+// createGrandTotalArray();
+console.log(storeTotalArray);
+
