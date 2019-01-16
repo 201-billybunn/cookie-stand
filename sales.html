@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
 
+<head>
+    <style>
+        .list-data {
+            display: none;
+        }    
+    </style>
 </head>
+
 <body>
     <!-- Add bar charts to display hourly sales data -->
     <!-- https://css-tricks.com/making-charts-with-css/ -->
@@ -10,24 +16,24 @@
         <a href="index.html">Home</a>
     </header>
     <h1>Daily Sales Projection</h1>
+    <table id="locations"></table>
 
-    <!-- <h2>Ballard</h2>
-    <ul id="store-zero" class="store"></ul> -->
+    <div class="list-data">
+        <h2>1st and Pike</h2>
+        <ul id="store-one" class="store"></ul>
 
-    <h2>1st and Pike</h2>
-    <ul id="store-one" class="store"></ul>
+        <h2>SeaTac Airport</h2>
+        <ul id="store-two" class="store"></ul>
 
-    <h2>SeaTac Airport</h2>
-    <ul id="store-two" class="store"></ul>
+        <h2>Seattle Center</h2>
+        <ul id="store-three" class="store"></ul>
 
-    <h2>Seattle Center</h2>
-    <ul id="store-three" class="store"></ul>
+        <h2>Capitol Hill</h2>
+        <ul id="store-four" class="store"></ul>
 
-    <h2>Capitol Hill</h2>
-    <ul id="store-four" class="store"></ul>
-
-    <h2>Alki</h2>
-    <ul id="store-five" class="store"></ul>
+        <h2>Alki</h2>
+        <ul id="store-five" class="store"></ul>
+    </div>
 
     <script src="js/app.js"></script>
 </body>
