@@ -41,29 +41,25 @@ function Store(name, minCustomersEachHour, maxCustomersEachHour, avgCookiesPerCu
 // RENDER TABLE DATA PROTOTYPE
 Store.prototype.renderTable = function () {
   var trEl = document.createElement('tr'); // Make a <tr> (table row)
-
-  // Loop to create, content, append for 'Name'
+  // Create, content, append for 'Name'
   var tdEl = document.createElement('td'); // Make a <td> (table cell)
-  tdEl.textContent = this.name; // Add content to <td>
-  trEl.appendChild(tdEl); // Append for 'name'
-
+  tdEl.textContent = this.name; // Add content to <td> (the name property)
+  trEl.appendChild(tdEl); // Append the table row with the <td>
   // Loop to create, content, append for 'arrCookiesEachHour'
   for (var i = 0; i < hours.length; i++) {
     var tdEl = document.createElement('td');
     tdEl.textContent = this.arrCookiesEachHour[i];
     trEl.appendChild(tdEl);
   }
-
   // Create, content, append for 'Daily Total'
   tdEl = document.createElement('td');
   tdEl.textContent = this.totalDailyCookies;
   trEl.appendChild(tdEl);
-
   storeTable.appendChild(trEl);
 };
 
 // Separate function to make the table header
-function makeHeaderRow() {
+Store.renderHeader = function () {
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th');
   for (var i = -1; i < hours.length; i++) { // 'i - 1' to create blank header cell above names
@@ -77,13 +73,35 @@ function makeHeaderRow() {
   storeTable.prepend(trEl);
 }
 
-
 // Function to render all stores
 function renderAllTables() {
   for (var i = 0; i < allStores.length; i++) {
     allStores[i].renderTable();
   }
 }
+
+Store.renderFooter = function () {
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  var grandTotal = document.createElement('td');
+  tdEl.textContent = 'Hourly Total';
+  trEl.appendChild(tdEl);
+  for (var i = 0; i < hours.length; i++) {
+    var totalPerHour = 0;
+    var tdEl = document.createElement('td');
+    for (var j = 0; j < allStores.length; j++) {
+      totalPerHour += allStores[j].arrCookiesEachHour[i];
+    }
+    tdEl = document.createElement('td');
+    tdEl.textContent = totalPerHour;
+    trEl.appendChild(tdEl);
+  }
+  storeTable.appendChild(trEl);
+ 
+  grandTotal = document.createElement('td');
+  grandTotal.textContent = sumArray(storeTotalArray); // Sums daily total array
+  trEl.appendChild(grandTotal); // Adds grand total to footer
+};
 
 // Create Store instances
 new Store('1st and Pike', 23, 65, 6.3);
@@ -93,57 +111,6 @@ new Store('Capitol Hill', 20, 38, 2.3);
 new Store('Alki', 2, 16, 4.6);
 
 console.table(allStores);
-makeHeaderRow();
+Store.renderHeader();
 renderAllTables();
-// makeFooterRow();
-
-// Separate function to make the table footer
-function makeFooterRow() {
-  var trEl = document.createElement('tr');
-  var thEl = document.createElement('th');
-  for (var i = -1; i < hours.length; i++) { // 'i - 1' to create blank header cell above names
-    var thEl = document.createElement('th');
-    thEl.textContent = hours[i];
-    trEl.appendChild(thEl);
-  }
-  thEl = document.createElement('th');
-  thEl.textContent = 'Grand Total';
-  trEl.appendChild(thEl);
-  storeTable.prepend(trEl);
-}
-
-function calcHourlyTotal() {
-  for (var i = 0; i < allStores.length; i++) {
-    
-
-    tdEl = document.createElement('td');
-    tdEl.textContent = totalPerHour;
-    trEl.appendChild(tdEl);
-  }
-}
-
-/*
-for loop inside of for loop
-first loop looped through hours.length
-inner loop loops through allStores.length
-total per hour var above inner loop
-
-inner loop
-totalPerHour += allStores[j].cookiesSoldEachHourArray[i];
-
-
-inside outer loop, but after inner loop, put the DOM stuff
-  tdEl = document.createElement('td');
-  tdEl.textContent = totalPerHour;
-  trEl.appendChild(tdEl);
-
-*/
-
-
-
-// console.log(allStores[0]);
-// console.log(allStores[0].arrCookiesEachHour);
-// console.log(sumArray(allStores[0].arrCookiesEachHour));
-// createGrandTotalArray();
-console.log(storeTotalArray);
-
+Store.renderFooter();
