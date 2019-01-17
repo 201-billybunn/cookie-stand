@@ -1,0 +1,391 @@
+/* base gray BFBBBF
+white EDECED
+dark 696669
+black 232223
+ */
+
+html, body {
+    height: 100%;
+    margin: auto;
+}
+
+body {
+    /* border: 3px dashed red; */
+
+    font-family: 'PT Sans', sans-serif;
+    /* background: grey; */
+    color: #232223;
+
+    background: #DBBDB4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#page {
+    /* border: 3px dashed yellow; */
+
+    height: 100%;
+    margin: auto;
+    max-width: 1000px;
+    /* background-color: #BFBBBF; */
+    font-size: 1em;
+}
+
+#content {
+    /* Everything within #content uses flexbox layout. Note min-height and column direction. */
+    /* border: 3px dashed green; */
+
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: #EDECED;
+}
+
+main {
+    /* border: 3px dashed blue; */
+
+    flex-grow: 1;
+}
+
+
+/* Header and logo styles */
+header {
+    /* border: 3px dashed magenta; */
+
+    background: #696669;
+    min-width: 100%;
+    line-height: 1.1rem;
+    display: flex;
+    flex-direction: row;
+    padding: 5px 0 8px 0;
+}
+#logo, nav {
+    /* display: inline-block; */
+}
+
+.logo {
+    /* border: 3px dotted crimson; */
+
+    flex-grow: 1;
+
+    /* min-width: 24%; */
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+nav {
+    /* border: 3px dotted greenyellow; */
+
+    flex-grow: 15;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+nav ul {
+    /* border: 3px dotted plum; */
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+nav li {
+    display: flex;
+    padding: 2vw;
+    font-size: 2.5vw;
+}
+nav a {
+    text-decoration: none;
+    color: #BFBBBF;
+}
+nav a:hover {
+    color: #EDECED;
+}
+/* With width of page at 750px, 2.5vw ~ 18px */
+@media screen and (min-width: 750px) {
+    nav li {
+       font-size: 18px;
+       color: 
+    }
+  }
+
+.media { 
+    min-width: 0;
+    /* margin: 5px; */
+ }
+
+.logo img {
+    width: 25vw;
+    max-width: 200px; 
+    /* max-height: 100%;  */
+}
+/* With width of page at 1000px, 25vw = 250px */
+@media screen and (min-width: 1000px) {
+    .logo img {
+       max-width: 250px;
+    }
+  }
+
+.logo h1 {
+    font-size: 2vw;
+    line-height: 80%;
+    margin-top: -5px;
+    font-weight: normal;
+    color: #EDECED;
+    font-family: 'PT serif', serif;
+    /* max-font- */
+}
+/* With width of page at 1000px, 2vw = 20px */
+@media screen and (min-width: 1000px) {
+    .logo h1 {
+       font-size: 20px;
+       line-height: ;
+    }
+  }
+
+
+/* Title styles */
+#title {
+font-family: 'PT sans', sans-serif;
+font-weight: bold;
+font-size: 6vw;
+padding: 0.8vw 0 0.8vw 0;
+color: #232223;
+text-align: center;
+
+}
+/* With width of page at 1000px, 6vw = 60px */
+@media screen and (min-width: 1000px) {
+    #title {
+       font-size: 60px;
+       padding: 8px 0 8px 0;
+    }
+  }
+
+/* ---------------------------------------------------------------------- */
+/* Table styles */
+#table-flex-wrap {
+    display: flex;
+    justify-content: center;
+}
+#table-area {
+    /* width: 300px; */
+    /* margin: 0 auto; */
+    background: #EDECED;
+    color: #696669;
+    padding: 5px 1%;
+    /* padding: 5px 20px; */
+    max-width: 800px;
+    /* border: 3px dotted magenta; */
+    display: flex;
+    justify-content: center;
+
+    
+}
+
+table {
+    /* border-spacing: 0.5rem; */
+    /* border-collapse: collapse; */
+    /* margin: 50px; */
+    font-size: 1.47vw;
+    /* max-width: 900px; */
+    /* border-color: red; */
+    /* background:; */
+    /* border: 3px dotted orange; */
+
+  }
+@media screen and (min-width: 1000px) { 
+    table {
+        font-size: 14.7px;
+    }
+}
+
+td, th {
+    /* border: 3px solid transparent; */
+    padding: 0.7vh 0.5vw 0.7vh 0.3vh;
+    text-align: left;
+    /* border-spacing: 10px; */
+    /* border: 5px solid rgba(255,255,255,.5); */
+        /* border: 5px solid black; */
+}
+
+table tr {
+        border: 2px solid black;
+    border-left: none;
+    border-right: none;
+}
+
+/* Top row */
+table tr:nth-child(1) {
+    background: lightgoldenrodyellow;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    /* padding-top: auto;
+    padding-bottom: auto; */
+    vertical-align: middle;
+    white-space: nowrap;
+    border-top: none;
+  }
+
+  /* Zebra stripes */
+tr:nth-child(odd) {
+    background: lightblue;
+}
+tr:nth-child(even) {
+    background: white;
+}
+ 
+/* houly totals */
+  table tr:last-child {
+    background: lightsalmon;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    border-bottom: none;
+  }
+  tr td:nth-child(1) {
+    background: lightseagreen;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    white-space: nowrap;
+    border-right: 2px solid black;
+  }
+
+  th:last-child {
+    /* background: gold; */
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    /* white-space: normal; */
+  }
+
+
+  /* td:last-of-type {
+    background: green;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+
+    white-space: normal;
+  }
+   */
+
+
+
+
+
+/* Form styles */
+
+form {
+	/* width: 500px; */
+	padding: 30px;
+	background: #FFFFFF;
+	margin: 50px auto;
+    /* border: 3px dashed fuchsia; */
+
+}
+form h2{
+	background: #4D4D4D;
+	text-transform: uppercase;
+	color: #797979;
+	font-size: 18px;
+	font-weight: 100;
+	padding: 20px;
+	margin: -30px -30px 30px -30px;
+}
+form input[type="text"],
+form input[type="date"],
+form input[type="datetime"],
+form input[type="email"],
+form input[type="number"],
+form input[type="search"],
+form input[type="time"],
+form input[type="url"],
+form input[type="password"],
+form textarea,
+form select 
+{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	width: 100%;
+	padding: 7px;
+	border: none;
+	border-bottom: 1px solid #ddd;
+	background: transparent;
+	margin-bottom: 10px;
+    height: 45px;
+    font-size: 2vw;
+}
+form textarea{
+	resize:none;
+	overflow: hidden;
+}
+form input[type="button"], 
+form input[type="submit"]{
+	-moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	background-color: #2CBBBB;
+	border: 1px solid #27A0A0;
+	display: inline-block;
+	cursor: pointer;
+	color: #FFFFFF;
+	font-size: 14px;
+	padding: 8px 18px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+form input[type="button"]:hover, 
+form input[type="submit"]:hover {
+	background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+	background-color:#34CACA;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+
+
+   /* Form styles */
+
+   
+.form-area {
+    /* border: 3px dotted yellow; */
+    margin: 5px;
+   }
+
+   table.space {
+    border-spacing: 20px;
+
+
+  }
+
+  #stores {
+      border-spacing: 10px;
+      /* color: red; */
+      
+  }

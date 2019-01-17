@@ -14,34 +14,58 @@
 
         <div id="content">
             <header>
-                <a href="index.html">Home</a>
+                <div class="logo">
+                    <div class="media">
+                        <img src="img/salmon.png">
+                    </div>
+                    <h1>Pat's<br>Salmon Cookies</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Homepage</a></li>
+                        <li><a href="#">Other Link</a></li>
+                        <li><a href="#">Another Link</a></li>
+                    </ul>
+                </nav>
             </header>
+            <main>
+                <h1 id="title">Daily Sales Projection</h1>
 
-            <h1 id="title">Daily Sales Projection</h1>
-            <div class="table-wrapper">
-                <table id="stores" class="space" cellpadding="10px"></table>
-            </div>
-            <br><br>
-            <section class=".form-wrapper">
-                <form id="table-form" >
-                    <fieldset>
-                        <legend>New Store Entry</legend>
-                        <!-- <label for="name">Store Name:</label><br> -->
-                        <input name="name" type="text" value="" required placeholder="Store Name">
-                        <br>
-                        <!-- <label for="min">Min / Cust:</label><br> -->
-                        <input name="min" type="number" value="" min="0" required placeholder="Minimum Customers Per Hour">
-                        <br>
-                        <!-- <label for="max">Max / Cust:</label><br> -->
-                        <input name="max" type="number" value="" min="0" required placeholder="Maximum Customers Per Hour">
-                        <br>
-                        <!-- <label for="avg">Avg Cookie / Sale:</label><br> -->
-                        <input name="avg" type="number" value="" min="0" step="0.01" required placeholder="Average Cookies Per Sale">
-                        <br><br>
-                        <input type="submit" name="input-one" value="Add Store">
-                    </fieldset>
-                </form>
-            </section>
+                <div id="table-flex-wrap">
+                    <div id="table-area">
+                        <table id="stores" class="space" cellpadding="10px"></table>
+                    </div>
+                </div>
+
+                <section class=".form-area">
+                    <form id="table-form">
+                        <fieldset>
+                            <legend>New Store Entry</legend>
+                            <!-- <label for="name">Store Name:</label><br> -->
+                            <input name="name" type="text" value="" required placeholder="Store Name">
+                            <br>
+                            <!-- <label for="min">Min / Cust:</label><br> -->
+                            <input name="min" type="number" value="" min="0" required placeholder="Minimum Customers Per Hour">
+                            <br>
+                            <!-- <label for="max">Max / Cust:</label><br> -->
+                            <input name="max" type="number" value="" min="0" required placeholder="Maximum Customers Per Hour">
+                            <br>
+                            <!-- <label for="avg">Avg Cookie / Sale:</label><br> -->
+                            <input name="avg" type="number" value="" min="0" step="0.01" required placeholder="Average Cookies Per Sale">
+                            <br><br>
+                            <input type="submit" name="input-one" value="Add Store">
+                            <input type="submit" name="input-two" value="Clear Table">
+                        </fieldset>
+                    </form>
+                </section>
+            </main>
+            <footer>
+                <ul>
+                    <li><a href="https://github.com/BillyBunn">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/billybunn/">LinkedIn</a></li>
+                    <li><a href="https://twitter.com/billybunn/">Twitter</a></li>
+                </ul>
+            </footer>
         </div>
     </div>
     <script src="js/app.js"></script>
