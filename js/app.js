@@ -1,6 +1,4 @@
 'use strict';
-
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++
 // HELPER FUNCTIONS
 function calcRandomCustomersHourly(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive
@@ -15,7 +13,6 @@ function sumArray(arrName) { // Sums an array of numbers
   return arrName.reduce(sum);
 }
 
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++
 // GLOBAL VARIABLES
 var storeTable = document.getElementById('stores');
 var tableForm = document.getElementById('table-form');
@@ -23,7 +20,6 @@ var hours = ['6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM', '1 PM', 
 var allStores = [];
 var storeTotalArray = [];
 
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++
 // STORE OBJECT CONSTRUCTOR FUNCTION
 function Store(storeName, minCustomersEachHour, maxCustomersEachHour, avgCookiesPerCustomer) {
   this.storeName = storeName,
@@ -39,40 +35,27 @@ function Store(storeName, minCustomersEachHour, maxCustomersEachHour, avgCookies
     this.totalDailyCookies = sumArray(this.arrCookiesEachHour);
   }
   allStores.push(this); // Pushes each instances into array 'allStores'
-  storeTotalArray.push(this.totalDailyCookies); // Pushes each instances' 
+  storeTotalArray.push(this.totalDailyCookies); // Pushes each instances'
 }
 
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++
-// EVENT HANDLER FOR SUBMISSION OF TABLE DATA
+// EVENT HANDLER FOR TABLE DATA SUBMISSION
 function handleTableSubmit(event) {
-  // console.log('name:',event.target.name.value);
-  // console.log('name:',event.target.min.value);
-  // console.log('name:',event.target.max.value);
-  // console.log('name:',event.target.avg.value);
-
   event.preventDefault(); // Prevents page reload on a 'submit' event
-
   var storeName = event.target.name.value;
   var minCustomersEachHour = parseInt(event.target.min.value);
   var maxCustomersEachHour = parseInt(event.target.max.value);
   var avgCookiesPerCustomer = parseInt(event.target.avg.value);
-
-  new Store(storeName, minCustomersEachHour, maxCustomersEachHour, avgCookiesPerCustomer);
-
-  // Clears table so new content can be rendered
-  storeTable.textContent = '';
-
+  new Store(storeName, minCustomersEachHour, maxCustomersEachHour, avgCookiesPerCustomer); 
+  storeTable.textContent = ''; // Clears table so new content can be rendered
   Store.renderHeader();
   renderAllTables();
   Store.renderFooter();
-
-  // Empties form fields
-  event.target.name.value = null;
+  event.target.name.value = null; // Empties form fields
   event.target.min.value = null;
   event.target.max.value = null;
   event.target.avg.value = null;
+  console.table(allStores);
 }
-
 // EVENT LISTENTER FOR TABLE SUBMISSION FORM
 tableForm.addEventListener('submit', handleTableSubmit);
 
@@ -83,8 +66,7 @@ Store.prototype.renderTable = function () {
   var tdEl = document.createElement('td'); // Make a <td> (table cell)
   tdEl.textContent = this.storeName; // Add content to <td> (the name property)
   trEl.appendChild(tdEl); // Append the table row with the <td>
-  // Loop to create, content, append for 'arrCookiesEachHour'
-  for (var i = 0; i < hours.length; i++) {
+  for (var i = 0; i < hours.length; i++) { // Loop to create, content, append for 'arrCookiesEachHour'
     var tdEl = document.createElement('td');
     tdEl.textContent = this.arrCookiesEachHour[i];
     trEl.appendChild(tdEl);
@@ -129,12 +111,9 @@ Store.renderFooter = function () {
     trEl.appendChild(tdEl);
   }
   storeTable.appendChild(trEl);
-
   grandTotal = document.createElement('td');
   grandTotal.textContent = sumArray(storeTotalArray); // Sums daily total array
   trEl.appendChild(grandTotal); // Adds grand total to footer
-
-  console.log('ran renderFooter');
 };
 
 // Function to render all stores
@@ -142,7 +121,6 @@ function renderAllTables() {
   for (var i = 0; i < allStores.length; i++) {
     allStores[i].renderTable();
   }
-  console.log('ran renderAllTables');
 }
 
 // Create Store instances

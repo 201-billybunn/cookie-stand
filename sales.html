@@ -2,59 +2,48 @@
 <html>
 
 <head>
-    <style>
-        .list-data {
-            display: none;
-        }    
-    </style>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/sales-style.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,700" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Add bar charts to display hourly sales data -->
-    <!-- https://css-tricks.com/making-charts-with-css/ -->
-    <header>
-        <a href="index.html">Home</a>
-    </header>
+    <div id="page">
+        <!-- Add bar charts to display hourly sales data -->
+        <!-- https://css-tricks.com/making-charts-with-css/ -->
 
-    <h1>Daily Sales Projection</h1>
-    <table id="stores"></table>
-    <br><br>
-    <form id="table-form">
-        <fieldset>
-            <legend>New Store Entry</legend>
-            <label for="name">Store Name:</label><br>
-            <input name="name" type="text" value="" required>
-            <br>
-            <label for="min">Min / Cust:</label><br>
-            <input name="min" type="number" value="" min="0" required>
-            <br>
-            <label for="max">Max / Cust:</label><br>
-            <input name="max" type="number" value="" min="0" required>
-            <br>
-            <label for="avg">Avg Cookie / Sale:</label><br>
-            <input name="avg" type="number" value="" min="0" step="0.01" required>
+        <div id="content">
+            <header>
+                <a href="index.html">Home</a>
+            </header>
+
+            <h1 id="title">Daily Sales Projection</h1>
+            <div class="table-wrapper">
+                <table id="stores" class="space" cellpadding="10px"></table>
+            </div>
             <br><br>
-            <input type="submit" name="input-one" value="Add Store">
-        </fieldset>
-    </form>
-
-    <div class="list-data">
-        <h2>1st and Pike</h2>
-        <ul id="store-one" class="store"></ul>
-
-        <h2>SeaTac Airport</h2>
-        <ul id="store-two" class="store"></ul>
-
-        <h2>Seattle Center</h2>
-        <ul id="store-three" class="store"></ul>
-
-        <h2>Capitol Hill</h2>
-        <ul id="store-four" class="store"></ul>
-
-        <h2>Alki</h2>
-        <ul id="store-five" class="store"></ul>
+            <section class=".form-wrapper">
+                <form id="table-form" >
+                    <fieldset>
+                        <legend>New Store Entry</legend>
+                        <!-- <label for="name">Store Name:</label><br> -->
+                        <input name="name" type="text" value="" required placeholder="Store Name">
+                        <br>
+                        <!-- <label for="min">Min / Cust:</label><br> -->
+                        <input name="min" type="number" value="" min="0" required placeholder="Minimum Customers Per Hour">
+                        <br>
+                        <!-- <label for="max">Max / Cust:</label><br> -->
+                        <input name="max" type="number" value="" min="0" required placeholder="Maximum Customers Per Hour">
+                        <br>
+                        <!-- <label for="avg">Avg Cookie / Sale:</label><br> -->
+                        <input name="avg" type="number" value="" min="0" step="0.01" required placeholder="Average Cookies Per Sale">
+                        <br><br>
+                        <input type="submit" name="input-one" value="Add Store">
+                    </fieldset>
+                </form>
+            </section>
+        </div>
     </div>
-
     <script src="js/app.js"></script>
 </body>
 
