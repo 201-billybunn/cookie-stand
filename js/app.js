@@ -130,5 +130,6 @@ new Store('Seattle Center', 11, 38, 3.7);
 new Store('Capitol Hill', 20, 38, 2.3);
 new Store('Alki', 2, 16, 4.6);
 
-console.table(allStores);
 renderTable();
+console.table(allStores);
+
