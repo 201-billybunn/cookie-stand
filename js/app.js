@@ -29,10 +29,10 @@ function Store(storeName, minCustomersEachHour, maxCustomersEachHour, avgCookies
   this.totalDailyCookies = 0;
   this.arrCustomersEachHour = [];
   this.arrCookiesEachHour = [];
-  for (var i = 0; i < hours.length; i++) {
+  for (var i = 0; i < hours.length; i++) { // Loops through all math, pushes to empty arrays
     this.arrCustomersEachHour.push(calcRandomCustomersHourly(this.minCustomersEachHour, this.maxCustomersEachHour));
     this.arrCookiesEachHour.push(calcAvgCookiesHourly(this.avgCookiesPerCustomer, this.arrCustomersEachHour[i]));
-    this.totalDailyCookies = sumArray(this.arrCookiesEachHour);
+    this.totalDailyCookies = sumArray(this.arrCookiesEachHour); // Creates store daily total
   }
   allStores.push(this); // Pushes each instances into array 'allStores'
   storeTotalArray.push(this.totalDailyCookies); // Pushes each instances'
@@ -46,10 +46,8 @@ function handleTableSubmit(event) {
   var maxCustomersEachHour = parseInt(event.target.max.value);
   var avgCookiesPerCustomer = parseInt(event.target.avg.value);
   new Store(storeName, minCustomersEachHour, maxCustomersEachHour, avgCookiesPerCustomer); 
-  storeTable.textContent = ''; // Clears table so new content can be rendered
-  Store.renderHeader();
-  renderAllTables();
-  Store.renderFooter();
+  storeTable.innerHTML = ''; // Clears table so new content can be rendered
+  renderTable();
   event.target.name.value = null; // Empties form fields
   event.target.min.value = null;
   event.target.max.value = null;
@@ -60,14 +58,14 @@ function handleTableSubmit(event) {
 tableForm.addEventListener('submit', handleTableSubmit);
 
 // RENDER TABLE DATA PROTOTYPE
-Store.prototype.renderTable = function () {
+Store.prototype.renderStoreRow = function () {
   var trEl = document.createElement('tr'); // Make a <tr> (table row)
   // Create, content, append for 'Name'
   var tdEl = document.createElement('td'); // Make a <td> (table cell)
   tdEl.textContent = this.storeName; // Add content to <td> (the name property)
   trEl.appendChild(tdEl); // Append the table row with the <td>
   for (var i = 0; i < hours.length; i++) { // Loop to create, content, append for 'arrCookiesEachHour'
-    var tdEl = document.createElement('td');
+    tdEl = document.createElement('td');
     tdEl.textContent = this.arrCookiesEachHour[i];
     trEl.appendChild(tdEl);
   }
@@ -91,20 +89,20 @@ Store.renderHeader = function () {
   thEl.textContent = 'Daily Store Total';
   trEl.appendChild(thEl);
   storeTable.prepend(trEl);
-}
+};
 
 // Function to make the table footer
 Store.renderFooter = function () {
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
-  var grandTotal = document.createElement('td');
+  var grandTotal = document.createElement('td'); // For grand total in bottom-right corner
   tdEl.textContent = 'Hourly Total';
   trEl.appendChild(tdEl);
-  for (var i = 0; i < hours.length; i++) {
+  for (var i = 0; i < hours.length; i++) { // For each hour column 'i'...
     var totalPerHour = 0;
     var tdEl = document.createElement('td');
-    for (var j = 0; j < allStores.length; j++) {
-      totalPerHour += allStores[j].arrCookiesEachHour[i];
+    for (var j = 0; j < allStores.length; j++) { // Loop through each Store row 'j'...
+      totalPerHour += allStores[j].arrCookiesEachHour[i]; // ...and add the sales to the var above
     }
     tdEl = document.createElement('td');
     tdEl.textContent = totalPerHour;
@@ -116,11 +114,13 @@ Store.renderFooter = function () {
   trEl.appendChild(grandTotal); // Adds grand total to footer
 };
 
-// Function to render all stores
-function renderAllTables() {
-  for (var i = 0; i < allStores.length; i++) {
-    allStores[i].renderTable();
+// Function to call header render, loop through store row render, and call footer render
+function renderTable() {
+  Store.renderHeader();
+  for (var i = 0; i < allStores.length; i++) { // Loops through to render each Store instance row
+    allStores[i].renderStoreRow();
   }
+  Store.renderFooter();  
 }
 
 // Create Store instances
@@ -131,6 +131,4 @@ new Store('Capitol Hill', 20, 38, 2.3);
 new Store('Alki', 2, 16, 4.6);
 
 console.table(allStores);
-Store.renderHeader();
-renderAllTables();
-Store.renderFooter();
+renderTable();
