@@ -26,7 +26,7 @@ body {
     /* border: 3px dashed yellow; */
 
     height: 100%;
-    margin: auto;
+    margin: 0 auto;
     max-width: 1000px;
     /* background-color: #BFBBBF; */
     font-size: 1em;
@@ -49,7 +49,7 @@ main {
     flex-grow: 1;
 }
 
-
+/* ----------------------------------------------------------------------------------------- */
 /* Header and logo styles */
 header {
     /* border: 3px dashed magenta; */
@@ -149,26 +149,26 @@ nav a:hover {
     }
   }
 
-
+/* ----------------------------------------------------------------------------------------- */
 /* Title styles */
 #title {
 font-family: 'PT sans', sans-serif;
 font-weight: bold;
-font-size: 6vw;
-padding: 0.8vw 0 0.8vw 0;
+text-transform: uppercase;
+font-size: 4.5vw;
+padding: 0.8vw 0 0 0;
 color: #232223;
 text-align: center;
-
 }
-/* With width of page at 1000px, 6vw = 60px */
+/* With width of page at 1000px, 5vw = 50px */
 @media screen and (min-width: 1000px) {
     #title {
-       font-size: 60px;
-       padding: 8px 0 8px 0;
+       font-size: 50px;
+       padding: 8px 0 0 0;
     }
   }
 
-/* ---------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------- */
 /* Table styles */
 #table-flex-wrap {
     display: flex;
@@ -179,9 +179,9 @@ text-align: center;
     /* margin: 0 auto; */
     background: #EDECED;
     color: #696669;
-    padding: 5px 1%;
+    /* padding: 0 30px; */
     /* padding: 5px 20px; */
-    max-width: 800px;
+    /* max-width: 800px; */
     /* border: 3px dotted magenta; */
     display: flex;
     justify-content: center;
@@ -208,11 +208,17 @@ table {
 
 td, th {
     /* border: 3px solid transparent; */
-    padding: 0.7vh 0.5vw 0.7vh 0.3vh;
+    padding: 0.7vh 0.5vw 0.7vh 0.3vw;
     text-align: left;
     /* border-spacing: 10px; */
     /* border: 5px solid rgba(255,255,255,.5); */
         /* border: 5px solid black; */
+}
+
+@media screen and (min-width: 1000px) { 
+    td, th {
+        padding: 0.7vh 5px 0.7vh 3px;
+    }
 }
 
 table tr {
@@ -277,9 +283,9 @@ tr:nth-child(even) {
 
 
 
-
+/* ----------------------------------------------------------------------------------------- */
 /* Form styles */
-
+/* https://www.sanwebe.com/2014/08/css-html-forms-designs */
 form {
 	/* width: 500px; */
 	padding: 30px;
@@ -368,24 +374,3 @@ form input[type="submit"]:hover {
 /*
 	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
 	*/
-
-
-   /* Form styles */
-
-   
-.form-area {
-    /* border: 3px dotted yellow; */
-    margin: 5px;
-   }
-
-   table.space {
-    border-spacing: 20px;
-
-
-  }
-
-  #stores {
-      border-spacing: 10px;
-      /* color: red; */
-      
-  }
