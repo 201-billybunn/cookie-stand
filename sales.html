@@ -15,6 +15,7 @@
     <header>
         <a href="index.html">Home</a>
     </header>
+
     <h1>Daily Sales Projection</h1>
     <table id="stores"></table>
 
@@ -23,26 +24,22 @@
 
 
 
-    <form action="/yourJSfilename.js">
+    <form id="table-form">
         <fieldset>
             <!-- need this for line to show up around form -->
             <legend>New Store Entry</legend>
             <label for="name">Store Name:</label><br>
-            <input name="name" type="text" value="...">
+            <input name="name" type="text" value="">
             <br>
-            
             <label for="min">Min / Cust:</label><br>
-            <input name="min" type="text" value="...">
+            <input name="min" type="text" value="">
             <br>
-
             <label for="max">Max / Cust:</label><br>
-            <input name="max" type="text" value="...">
+            <input name="max" type="text" value="">
             <br>
-
             <label for="avg">Avg Cookie / Sale:</label><br>
-            <input name="avg" type="text" value="...">
+            <input name="avg" type="text" value="">
             <br><br>
-            
             <input type="submit" name="input-one" value="Add Store">
         </fieldset>
     </form>
