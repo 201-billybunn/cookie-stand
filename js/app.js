@@ -19,7 +19,6 @@ function sumArray(arrName) { // Sums an array of numbers
 // GLOBAL VARIABLES
 var storeTable = document.getElementById('stores');
 var tableForm = document.getElementById('table-form');
-
 var hours = ['6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM'];
 var allStores = [];
 var storeTotalArray = [];
@@ -46,14 +45,12 @@ function Store(storeName, minCustomersEachHour, maxCustomersEachHour, avgCookies
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++
 // EVENT HANDLER FOR SUBMISSION OF TABLE DATA
 function handleTableSubmit(event) {
-  console.log('name:',event.target.name.value);
-  console.log('name:',event.target.min.value);
-  console.log('name:',event.target.max.value);
-  console.log('name:',event.target.avg.value);
+  // console.log('name:',event.target.name.value);
+  // console.log('name:',event.target.min.value);
+  // console.log('name:',event.target.max.value);
+  // console.log('name:',event.target.avg.value);
 
   event.preventDefault(); // Prevents page reload on a 'submit' event
-
-  // put HTML5 form validation here
 
   var storeName = event.target.name.value;
   var minCustomersEachHour = parseInt(event.target.min.value);
@@ -62,6 +59,7 @@ function handleTableSubmit(event) {
 
   new Store(storeName, minCustomersEachHour, maxCustomersEachHour, avgCookiesPerCustomer);
 
+  // Clears table so new content can be rendered
   storeTable.textContent = '';
 
   Store.renderHeader();
@@ -96,8 +94,6 @@ Store.prototype.renderTable = function () {
   tdEl.textContent = this.totalDailyCookies;
   trEl.appendChild(tdEl);
   storeTable.appendChild(trEl);
-
-  console.log('ran renderTable');
 };
 
 // Function to make the table header
@@ -113,8 +109,6 @@ Store.renderHeader = function () {
   thEl.textContent = 'Daily Store Total';
   trEl.appendChild(thEl);
   storeTable.prepend(trEl);
-
-  console.log('ran renderHeader');
 }
 
 // Function to make the table footer
@@ -150,16 +144,6 @@ function renderAllTables() {
   }
   console.log('ran renderAllTables');
 }
-
-
-
-
-
-
-
-
-
-
 
 // Create Store instances
 new Store('1st and Pike', 23, 65, 6.3);
