@@ -1,59 +1,312 @@
-html, body {
-    /* font-family: Open Sans; */
-    font-size: 1em;
-    line-height: 28px;
-  }
-  
-  h1 {
-    letter-spacing: -15px;
-    /* font-family: Open Sans; */
-    color: white;
-    text-align: center;
-    font-size: 175px;
-    /* font-weight: 800; */
-    line-height: 200px;
-  }
-  
-  .MainContainer {
-    perspective: 1px;
-    transform-style: preserve-3d;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
-  
-  .ContentContainer {
-    position: relative;
-    display: block;
-    background-color: white;
-    z-index: 1;
-  }
-  
-  .Content {
-    max-width: 750px;
-    margin: 0 auto;
-    padding: 75px 0;
-  }
-  
-  p {
-    margin: 75px 0;
-  }
-  
-  .ParallaxContainer {
-    display: flex;
-    flex: 1 0 auto;
-    position: relative;
-    z-index: -1;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
+/*
+  Color Palette:
+  black: #353335
+  light grey: #A5A39B
+  light green: #9FA586
+  brown: #957243
+  pink: #FA8B7E
+https://coolors.co/9fa586-fa8b7e-957243-a5a39b-353335 
+*/
 
-    /* translateZ pushes div into the background, which makes it look half its size 
-    scale compensates for this, doubling it size, but the scroll effect is as if it were in the background*/
-    transform: translateZ(-6px) scale(7);
-    background: url(https://upload.wikimedia.org/wikipedia/commons/2/2c/Chum_salmon_leaping_%286088542755%29.jpg);
-    background-color: rgb(250,228, 216);
-    background-repeat:no-repeat;
-    background-position: center center;
-  }
 
+body section:first-of-type {
+  font-family: 'PT Serif', serif;
+}
+
+main section:nth-of-type(1) {
+}
+
+main section:nth-of-type(2) {
+  background: #A5A39B;
+}
+
+main section:nth-of-type(3) {
+}
+
+main section:nth-of-type(4) {
+  background: #9FA586;
+}
+
+#last {
+  background: #957243;
+}
+
+body, html {
+  height: 100%;
+  color: #353335;
+}
+
+/* ------------------------------------------------------------------------------------ */
+/* Parallax and title page styles */
+/* https://www.w3schools.com/howto/howto_css_parallax.asp */
+.parallax {
+/* The image used */
+background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/2c/Chum_salmon_leaping_%286088542755%29.jpg");
+
+/* Full height */
+min-height: 100%; 
+
+/* Create the parallax scrolling effect */
+position: relative;
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+opacity: 0.7;
+}
+
+.parallax section {
+  position: absolute;
+  left: 0;
+  top: 36%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  /* opacity: 100%; */
+
+}
+
+.parallax h1 {
+  font-size: 10vw;
+  font-weight: 700;
+  letter-spacing: .2vw;
+  text-transform: uppercase;
+}
+.parallax h1:hover {
+  color: #FA8B7E;
+}
+.parallax h1:hover ~ img {
+  -webkit-filter: none; /* Safari 6.0 - 9.0 */
+  filter: none;
+}
+.parallax span {
+  display: block;
+  font-size: 7vw;
+  font-weight: 500;
+
+  text-transform: capitalize;
+  margin-bottom: -2.2vw;
+}
+
+.parallax img {
+  width: 22vw;
+  max-width: 200px; 
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  opacity: 0.9;
+  filter: brightness(0) invert(1);
+
+}
+.parallax img:hover {
+  /-webkit-filter: none; /* Safari 6.0 - 9.0 */
+  filter: none;
+}
+.parralax ul {
+  /* border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 1.3vw 0; */
+}
+.parallax li {
+  display: inline-block;
+  margin-top: 2vh;
+  /* border-top: 2px solid white; */
+  /* border-bottom: 1px solid white; */
+  /* padding: 2.3vw 0; */
+}
+.parallax a {
+  color: white;
+  margin: 2vw 2.5vw 0 2.5vw;
+  font-size: 2.45vw;
+  font-family: 'PT Sans', sans-serif;
+  text-transform: uppercase;
+  border: 1.3px solid white;
+  border-radius: 6px;
+  padding: 0.5vw;
+}
+.parallax a:hover {
+  color: #FA8B7E;
+  border-color: #FA8B7E;
+}
+
+/* ------------------------------------------------------------------------------------ */
+/* About Us Section */
+/* Uses flexbox layout */
+/* See 'Using Flexbox' at https://css-tricks.com/left-and-right/ */
+main section {
+  /* border: 3px dotted plum; */
+  display: flex;
+  flex-direction: row; /* Default. Change to 'row-reverse' to flip text and image' */
+  flex-wrap: wrap;
+  padding: 2vh 2vw;
+}
+main section div, img {
+  /* border: 3px solid plum; */
+  flex: 1;
+}
+main section div {
+  /* border: 3px solid plum; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  min-width: 40%;
+  /* padding: 2vh 2vw; */
+}
+main section img {
+  /* border: 3px solid plum; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  flex: 1;
+  max-width: 50%;
+  object-fit: contain; /* solution to keep aspect ratio: https://stackoverflow.com/questions/30788131/css3-flexbox-maintain-image-aspect-ratio */
+  min-width: 40%;
+  margin: 0 0 0 2vw;
+  /* filter: contrast(50%); */
+  /* filter: brightness(100%); */
+  -webkit-filter: brightness(120%) grayscale(100%) contrast(90%); /* Safari 6.0 - 9.0 */
+  filter: brightness(120%) grayscale(100%) contrast(90%);
+  opacity: 0.9;
+}
+main section img:hover{
+  -webkit-filter: brightness(120%) contrast(90%); /* Safari 6.0 - 9.0 */
+  filter: brightness(120%) contrast(90%);
+}
+
+h2 {
+  /* border: 3px dotted plum; */
+
+  font-size: 4vw;
+  font-weight: 700;
+  letter-spacing: 0.32vw;
+}
+main section p {
+  font-size: 2.5vw;
+  padding: 1.5vw 0;
+  /* border: 3px solid green; */
+  /* margin: 2vh 0; */
+}
+
+/* ------------------------------------------------------------------------------------ */
+/* Our Recipte Section */
+
+#frosted-cookie {
+  position: absolute;
+  /* padding: 20vw 0 0 20vw;  */
+  padding: 0 0 0 0; 
+  margin: 8vh 0 0 5.5vw;
+  transform: rotate(-2deg);
+  max-height: 170px;
+  /* height: 100px; */
+
+  width: 22vw;
+  /* max-width: 200px;  */
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  opacity: 0.4;
+  filter: brightness(0) invert(1);
+}
+#frosted-cookie:hover {
+  -webkit-filter: none; /* Safari 6.0 - 9.0 */
+  filter: none;
+}
+#frosted-cookie:hover ~ main section:nth-of-type(3) img {
+  -webkit-filter: none; /* Safari 6.0 - 9.0 */
+  filter: none;
+  border: 3px solid #353335;
+}
+
+main section:nth-of-type(3) img {
+  /* border-radius: 20px; */
+}
+
+#frosted-cookie img {
+  /* top: 25%;
+  left: 60%;
+  width: 20%; */
+}
+main section:nth-of-type(2) #frosted-cookie{
+  /* border: 8px solid gold; */
+}
+
+/* ------------------------------------------------------------------------------------ */
+/* Locations Section */
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.columns div {
+  flex: 1;
+}
+h3 {
+  font-size: 3vw;
+  font-weight: 700;
+  letter-spacing: 0.12vw;
+  /* border: 1px solid red; */
+  margin-bottom: 0;
+}
+.columns div p {
+  padding: 0 1vh 2vh 1vh;
+  /* border: 1px solid yellow; */
+}
+
+/* ------------------------------------------------------------------------------------ */
+/* Shop Section */
+main section:nth-of-type(4) {
+  /* border: 8px solid blue; */
+  flex-direction: row-reverse;
+}
+
+main section:nth-of-type(4) a {
+  color: #353335;
+  /* margin: 2vw 2.5vw 0 2.5vw; */
+  margin: 0 auto;
+  
+  font-size: 2.45vw;
+  font-family: 'PT Sans', sans-serif;
+  text-transform: uppercase;
+  border: 1.3px solid #353335;
+  border-radius: 6px;
+  text-align: center;
+  padding: 0.5vw;
+}
+main section:nth-of-type(4) a:hover {
+  color: #FA8B7E;
+  border-color: #FA8B7E;
+}
+
+/* ------------------------------------------------------------------------------------ */
+/* Contact Section */
+#last {
+  color: #353335;
+  /* border-top: 30px solid white; */
+}
+address {
+  color: #353335;
+  font-family: 'PT Serif', serif;
+  margin-top: 2vw;
+}
+
+#sales-div {
+  height: 25px;
+  padding-top: 8px;
+  text-align: center;
+  background: #353335;
+
+}
+#sales {
+  color: #A5A39B;
+  font-size: 1.4vw;
+  text-transform: uppercase;
+  text-align: center;
+  border: 1.3px solid #A5A39B;
+  border-radius: 6px;
+  padding: 0.5vw;
+  text-align: center;
+  font-family: 'PT Sans Serif', sans-serif;
+
+}
+#sales:hover {
+  color: #FA8B7E;
+  border: 1.3px solid #FA8B7E;
+}
