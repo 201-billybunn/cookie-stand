@@ -1,8 +1,12 @@
-/* base gray BFBBBF
-white EDECED
-dark 696669
-black 232223
- */
+/*
+  Color Palette:
+  black: #353335
+  light grey: #A5A39B
+  light green: #9FA586
+  brown: #957243
+  pink: #FA8B7E
+https://coolors.co/9fa586-fa8b7e-957243-a5a39b-353335 
+*/
 
 html, body {
     height: 100%;
@@ -14,9 +18,9 @@ body {
 
     font-family: 'PT Sans', sans-serif;
     /* background: grey; */
-    color: #232223;
+    color: #353335;
 
-    background: #DBBDB4;
+    background: #A5A39B;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -102,16 +106,16 @@ nav li {
 }
 nav a {
     text-decoration: none;
-    color: #BFBBBF;
+    color: #A5A39B;
 }
 nav a:hover {
-    color: #EDECED;
+    color: #FA8B7E;
 }
 /* With width of page at 750px, 2.5vw ~ 18px */
 @media screen and (min-width: 750px) {
     nav li {
        font-size: 18px;
-       color: 
+       /* color:  */
     }
   }
 
@@ -132,15 +136,6 @@ nav a:hover {
     }
   }
 
-.logo h1 {
-    font-size: 2vw;
-    line-height: 80%;
-    margin-top: -5px;
-    font-weight: normal;
-    color: #EDECED;
-    font-family: 'PT serif', serif;
-    /* max-font- */
-}
 /* With width of page at 1000px, 2vw = 20px */
 @media screen and (min-width: 1000px) {
     .logo h1 {
@@ -149,16 +144,37 @@ nav a:hover {
     }
   }
 
+.logo h1 {
+    font-family: 'PT serif', serif;
+    font-size: 2vw;
+    font-weight: 700;
+    letter-spacing: .2vw;
+    text-transform: uppercase;
+    color: #EDECED;
+}
+  .logo span {
+    line-height: 80%;
+    margin-top: -5px;
+    color: #EDECED;
+    font-family: 'PT serif', serif;
+    display: block;
+    font-size: 2vw;
+    font-weight: 500;
+  
+    text-transform: capitalize;
+    /* margin-bottom: -2.2vw; */
+  }
 
 /* Title styles */
 #title {
-font-family: 'PT sans', sans-serif;
-font-weight: bold;
-font-size: 6vw;
-padding: 0.8vw 0 0.8vw 0;
-color: #232223;
-text-align: center;
-
+    font-family: 'PT serif', serif;
+    font-weight: bold;
+    font-size: 6vw;
+    padding: 0.8vw 0 0.8vw 0;
+    color: #232223;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.32vw;
 }
 /* With width of page at 1000px, 6vw = 60px */
 @media screen and (min-width: 1000px) {
@@ -224,7 +240,7 @@ table tr {
 /* Top row */
 table tr:nth-child(1) {
     background: lightgoldenrodyellow;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-weight: 700;
     /* padding-top: auto;
     padding-bottom: auto; */
@@ -251,7 +267,7 @@ tr:nth-child(even) {
   }
   tr td:nth-child(1) {
     background: lightseagreen;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-weight: 700;
     white-space: nowrap;
     border-right: 2px solid black;
@@ -259,7 +275,7 @@ tr:nth-child(even) {
 
   th:last-child {
     /* background: gold; */
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-weight: 700;
     /* white-space: normal; */
   }
