@@ -16,6 +16,7 @@ function sumArray(arrName) { // Sums an array of numbers
 // GLOBAL VARIABLES
 var storeTable = document.getElementById('stores');
 var tableForm = document.getElementById('table-form');
+var clearTable = document.getElementById('clear-table');
 var hours = ['6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM'];
 var allStores = [];
 var storeTotalArray = [];
@@ -58,6 +59,16 @@ function handleTableSubmit(event) {
 }
 // EVENT LISTENTER FOR TABLE SUBMISSION FORM
 tableForm.addEventListener('submit', handleTableSubmit);
+
+// EVENT HANDLER & LISTENER FOR CLEAR TABLE
+document.getElementById("clear-table").addEventListener("click", function(){
+  event.preventDefault(); // Prevents page reload on a 'submit' event
+  storeTable.textContent = '';
+  allStores.length = 5;
+  Store.renderHeader();
+  renderAllTables();
+  Store.renderFooter();
+});
 
 // RENDER TABLE DATA PROTOTYPE
 Store.prototype.renderTable = function () {
