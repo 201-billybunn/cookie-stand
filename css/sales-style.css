@@ -14,32 +14,23 @@ html, body {
 }
 
 body {
-    /* border: 3px dashed red; */
-
     font-family: 'PT Sans', sans-serif;
-    /* background: grey; */
     color: #353335;
-
-    background: #A5A39B;
+    background: #EDECED;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 #page {
-    /* border: 3px dashed yellow; */
-
     height: 100%;
     margin: auto;
     max-width: 1000px;
-    /* background-color: #BFBBBF; */
     font-size: 1em;
 }
 
 #content {
     /* Everything within #content uses flexbox layout. Note min-height and column direction. */
-    /* border: 3px dashed green; */
-
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -48,53 +39,45 @@ body {
 }
 
 main {
-    /* border: 3px dashed blue; */
-
     flex-grow: 1;
 }
 
 
 /* Header and logo styles */
 header {
-    /* border: 3px dashed magenta; */
-
-    background: #696669;
+    background: #353335;
     min-width: 100%;
     line-height: 1.1rem;
     display: flex;
     flex-direction: row;
     padding: 5px 0 8px 0;
-}
-#logo, nav {
-    /* display: inline-block; */
+    
 }
 
 .logo {
-    /* border: 3px dotted crimson; */
-
     flex-grow: 1;
-
-    /* min-width: 24%; */
     text-align: center;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
+    -webkit-filter: brightness(120%) grayscale(100%) contrast(90%); /* Safari 6.0 - 9.0 */
+    filter: brightness(1000%) grayscale(100%) contrast(100%);
+    opacity: 0.9;
 }
 
+.logo:hover{
+    -webkit-filter: brightness(120%) contrast(90%); /* Safari 6.0 - 9.0 */
+    filter: brightness(120%) contrast(90%);
+  }
+
 nav {
-    /* border: 3px dotted greenyellow; */
-
     flex-grow: 15;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 nav ul {
-    /* border: 3px dotted plum; */
-
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
@@ -121,13 +104,11 @@ nav a:hover {
 
 .media { 
     min-width: 0;
-    /* margin: 5px; */
  }
 
 .logo img {
     width: 25vw;
     max-width: 200px; 
-    /* max-height: 100%;  */
 }
 /* With width of page at 1000px, 25vw = 250px */
 @media screen and (min-width: 1000px) {
@@ -162,14 +143,13 @@ nav a:hover {
     font-weight: 500;
   
     text-transform: capitalize;
-    /* margin-bottom: -2.2vw; */
   }
 
 /* Title styles */
 #title {
     font-family: 'PT serif', serif;
     font-weight: bold;
-    font-size: 6vw;
+    font-size: 4.5vw;
     padding: 0.8vw 0 0.8vw 0;
     color: #232223;
     text-align: center;
@@ -186,35 +166,22 @@ nav a:hover {
 
 /* ---------------------------------------------------------------------- */
 /* Table styles */
+
 #table-flex-wrap {
     display: flex;
     justify-content: center;
 }
 #table-area {
-    /* width: 300px; */
-    /* margin: 0 auto; */
     background: #EDECED;
-    color: #696669;
+    color: #353335;
     padding: 5px 1%;
-    /* padding: 5px 20px; */
     max-width: 800px;
-    /* border: 3px dotted magenta; */
     display: flex;
     justify-content: center;
-
-    
 }
 
 table {
-    /* border-spacing: 0.5rem; */
-    /* border-collapse: collapse; */
-    /* margin: 50px; */
     font-size: 1.47vw;
-    /* max-width: 900px; */
-    /* border-color: red; */
-    /* background:; */
-    /* border: 3px dotted orange; */
-
   }
 @media screen and (min-width: 1000px) { 
     table {
@@ -223,27 +190,22 @@ table {
 }
 
 td, th {
-    /* border: 3px solid transparent; */
     padding: 0.7vh 0.5vw 0.7vh 0.3vh;
     text-align: left;
-    /* border-spacing: 10px; */
-    /* border: 5px solid rgba(255,255,255,.5); */
-        /* border: 5px solid black; */
+    border-right: 1px solid #353335;
 }
 
 table tr {
-        border: 2px solid black;
+    border: 1px solid #353335;
     border-left: none;
     border-right: none;
 }
 
 /* Top row */
 table tr:nth-child(1) {
-    background: lightgoldenrodyellow;
+    background: #9FA586;
     font-family: 'PT Sans', sans-serif;
     font-weight: 700;
-    /* padding-top: auto;
-    padding-bottom: auto; */
     vertical-align: middle;
     white-space: nowrap;
     border-top: none;
@@ -251,157 +213,106 @@ table tr:nth-child(1) {
 
   /* Zebra stripes */
 tr:nth-child(odd) {
-    background: lightblue;
+    background: #D6D5D1;
 }
 tr:nth-child(even) {
-    background: white;
+    background: #fff;
 }
  
 /* houly totals */
   table tr:last-child {
-    background: lightsalmon;
+    background: #FA8B7E;
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     font-style: italic;
     border-bottom: none;
   }
   tr td:nth-child(1) {
-    background: lightseagreen;
+    background: #FA8B7E;
     font-family: 'PT Sans', sans-serif;
     font-weight: 700;
     white-space: nowrap;
-    border-right: 2px solid black;
+    border-right: 2px solid #353335;
   }
 
-  th:last-child {
-    /* background: gold; */
-    font-family: 'PT Sans', sans-serif;
-    font-weight: 700;
-    /* white-space: normal; */
+ td:last-child, th:last-child {
+    border-right: none;
   }
 
-
-  /* td:last-of-type {
-    background: green;
+  tr:last-child td:last-child{
+    background: #9FA586;
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
-
+    border: 2px solid #353335;
     white-space: normal;
   }
-   */
 
-
-
-
-
+/* ---------------------------------------------------------------------- */
 /* Form styles */
-
 form {
 	/* width: 500px; */
-	padding: 30px;
+	padding: 15px;
 	background: #FFFFFF;
-	margin: 50px auto;
+	margin: 15px auto;
     /* border: 3px dashed fuchsia; */
+    font-family: 'PT Sans', sans-serif;
+
 
 }
-form h2{
-	background: #4D4D4D;
+form legend{
+    /* background: #4D4D4D; */
+    font-family: 'PT Serif', serif;
+    font-size: 2.5vw;
 	text-transform: uppercase;
-	color: #797979;
-	font-size: 18px;
-	font-weight: 100;
-	padding: 20px;
-	margin: -30px -30px 30px -30px;
+    color: #353335;
+	border-bottom: 1px solid #353335;
+    font-weight: 700;
+	margin: 20px auto;
 }
 form input[type="text"],
-form input[type="date"],
-form input[type="datetime"],
-form input[type="email"],
 form input[type="number"],
 form input[type="search"],
-form input[type="time"],
-form input[type="url"],
-form input[type="password"],
-form textarea,
 form select 
 {
 	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	outline: none;
+	/* outline: none; */
 	display: block;
 	width: 100%;
-	padding: 7px;
+	/* padding: 7px; */
 	border: none;
 	border-bottom: 1px solid #ddd;
-	background: transparent;
-	margin-bottom: 10px;
-    height: 45px;
+	/* background: transparent; */
+	/* margin-bottom: 10px; */
+    /* height: 45px; */
     font-size: 2vw;
 }
 form textarea{
-	resize:none;
+	resize: none;
 	overflow: hidden;
 }
-form input[type="button"], 
-form input[type="submit"]{
-	-moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
-	box-shadow: inset 0px 1px 0px 0px #45D6D6;
+input[type="button"], 
+input[type="submit"]{
+	/* box-shadow: inset 0px 1px 0px 0px #45D6D6; */
 	background-color: #2CBBBB;
-	border: 1px solid #27A0A0;
+	/* border: 1px solid #27A0A0; */
 	display: inline-block;
 	cursor: pointer;
 	color: #FFFFFF;
-	font-size: 14px;
-	padding: 8px 18px;
-	text-decoration: none;
-	text-transform: uppercase;
+    font-size: 2vw;
+	padding: 10px 15px;
+	/* text-decoration: none; */
+    text-transform: uppercase;
+    margin: 0px auto;
+    display: block;
 }
-form input[type="button"]:hover, 
-form input[type="submit"]:hover {
-	background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
-	background-color:#34CACA;
+input[type="button"]:hover, 
+input[type="submit"]:hover {
+	/* background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%); */
+    background-color:#34CACA;
+    
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
-	*/
-
-
-   /* Form styles */
-
-   
-.form-area {
-    /* border: 3px dotted yellow; */
-    margin: 5px;
-   }
-
-   table.space {
-    border-spacing: 20px;
-
-
-  }
-
-  #stores {
-      border-spacing: 10px;
-      /* color: red; */
-      
-  }
+#clear-table {
+    margin: 10px auto;
+    display: block;
+}
